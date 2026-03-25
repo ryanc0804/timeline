@@ -1,7 +1,18 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { auth } from "@/auth";
 import { SignOutButton } from "@/components/SignOutButton";
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default async function AppLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const session = await auth();
+  if (!session?.user) {
+    redirect("/login");
+  }
+
   return (
     <div className="flex min-h-full flex-col bg-zinc-50 dark:bg-zinc-950">
       <header className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-200 bg-white/90 px-6 py-4 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/90">

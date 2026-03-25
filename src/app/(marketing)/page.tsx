@@ -11,7 +11,7 @@ export default async function HomePage() {
         </h1>
         <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
           Create timelines with custom titles and colors for each entry. Sign in
-          with Google or email and password.
+          with your email and password.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           {session?.user ? (
